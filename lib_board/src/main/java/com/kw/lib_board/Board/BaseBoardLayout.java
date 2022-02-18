@@ -221,8 +221,6 @@ abstract class BaseBoardLayout extends FrameLayout implements View.OnClickListen
                 minY=maxY+fontMetrics.top;
                 createImageView();
                 drawText="";
-            }else{
-
             }
         }
     }
@@ -235,7 +233,6 @@ abstract class BaseBoardLayout extends FrameLayout implements View.OnClickListen
         if(jumpDraw){
             return true;
         }else{
-            Log.e("-----11111111----",x+"==========="+y);
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     //得到第一个点的xy坐标
@@ -339,8 +336,6 @@ abstract class BaseBoardLayout extends FrameLayout implements View.OnClickListen
             if(minX==0&&minY==0&&maxX==0&&maxY==0){
             }else{
                 DragScaleView imageView=new DragScaleView(getContext());
-//                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(newbm.getWidth(), newbm.getHeight());
-//                imageView.setLayoutParams(lp);  //设置图片的大小
                 imageView.setImageBitmap(newbm);
                 int l=Math.max((int) ((int) minX-paint.getStrokeWidth()),0);
                 int t=Math.max((int) ((int)minY-paint.getStrokeWidth()),0);
@@ -362,7 +357,6 @@ abstract class BaseBoardLayout extends FrameLayout implements View.OnClickListen
             }
             setMmPoint(0,0,0,0);
             cacheBitmap=null;
-//            creatBitmap();
         }catch (Exception e){
             Log.e("黑板创建图层错误",e.toString());
         }

@@ -83,9 +83,6 @@ public class Board extends BaseBoard{
             ViewInfo info = entry.getValue();
             View view = entry.getKey();
             view.layout(info.getLeft(),info.getTop(), info.getRight(), info.getBottom());
-            if(view instanceof DragBoardView){
-//                Log.e(info.getLeft()+"TAG-----父----"+info.getTop(), "onLayout: ------------------"+info.getRight()+"----"+info.getBottom());
-            }
         }
     }
     /**

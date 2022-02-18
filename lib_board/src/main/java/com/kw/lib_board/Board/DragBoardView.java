@@ -100,19 +100,11 @@ public class DragBoardView extends LinearLayout /*implements View.OnTouchListene
                 statusListener.boardClose(DragBoardView.this);
             }
         });
-//        title_R.setOnTouchListener(this);
     }
-//    @Override
-//    public boolean onTouch(View v, MotionEvent event) {
-//        Log.e("-----onTouch------","-----------");
-//        statusListener.boardMove(this,event);
-//        return true;
-//    }
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         dragDirection = getDirection(this, (int) ev.getX(),
                 (int) ev.getY());
-        Log.e("-----拦截------",dragDirection+"-----------"+super.onInterceptTouchEvent(ev));
         if(ev.getAction()==MotionEvent.ACTION_DOWN){
             ACTION_DOWN_VAL=dragDirection;//记录第一次按下的时候的值是标题栏TITLE的话，在ACTION_MOVE的时候才能拖动
         }
@@ -137,7 +129,6 @@ public class DragBoardView extends LinearLayout /*implements View.OnTouchListene
         if(animting){
             return true;
         }
-        Log.e(event.getAction()+"..........","..........");
         if(dragDirection==TITLE&&ACTION_DOWN_VAL==TITLE){
             statusListener.boardMove(this,event);
         }else if(ACTION_DOWN_VAL!=-1/*&&ACTION_DOWN_VAL==TITLE*/){//第一次按下的时候不能在黑板中才可以执行
@@ -185,63 +176,31 @@ public class DragBoardView extends LinearLayout /*implements View.OnTouchListene
                         break;
                     case LEFT_BOTTOM: // 左下
                         left(v, dx);
-//                        oriBottom=oriTop+(int) ((oriRight-oriLeft));
                         bottom(v, dy);
-//                        bottom(v, (int) -(dx/scale));
                         break;
                     case LEFT_TOP: // 左上
                         left(v, dx);
-//                        oriTop= oriBottom-(int) ((oriRight-oriLeft));
                         top(v, dy);
-//                        top(v, (int) (dx/scale));
                         break;
                     case RIGHT_BOTTOM: // 右下
                         right(v, dx);
-//                        oriBottom=oriTop+(int) ((oriRight-oriLeft));
                         bottom(v, dy);
-//                        bottom(v, (int) (dx/scale));
                         break;
                     case RIGHT_TOP: // 右上
                         right(v, dx);
-//                        oriTop= oriBottom-(int) ((oriRight-oriLeft));
                         top(v, dy);
-//                        top(v, (int) -(dx/scale));
                         break;
 
                 }
                 if (dragDirection != -1) {
 
-
-//                    FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(oriRight-oriLeft, oriBottom-oriTop);//默认值
-//                    v.setLayoutParams(lp);  //设置小黑板的大小
-//                    int count=getChildCount();
-//                    for (int i=0;i<count;i++){
-//                        View child=getChildAt(i);
-////                        child.layout(0,child.getTop(),oriRight,child.getBottom());
-////                        measureChild(child,measureWidth(oriRight-oriLeft),getMeasuredHeight());
-//                        child.setLayoutParams(new LayoutParams(oriRight-oriLeft,child.getMeasuredHeight()));
-//                    }
-//                    requestLayout();
-//                    v.layout(oriLeft, oriTop, oriRight, oriBottom);
                     statusListener.boardSizeChange(this,oriLeft, oriTop, oriRight, oriBottom);
                 }
-
-
-
-
-//                v.setBackgroundColor(Color.RED);
 
                 lastX = (int) event.getRawX();
                 lastY = (int) event.getRawY();
                 break;
             case MotionEvent.ACTION_UP:
-//                Log.e(oriLeft+"~~~~~~~~~~~",oriTop+"~~~~~~~~~~~"+oriRight+"~~~~~~~~~~~~~~"+oriBottom);
-//                v.layout(oriLeft, oriTop, oriRight, oriBottom);
-//                FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(oriRight-oriLeft, oriBottom-oriTop);//默认值
-//                v.setLayoutParams(lp);  //设置小黑板的大小
-//                LinearLayout.LayoutParams linearParams =(LinearLayout.LayoutParams) title_R.getLayoutParams();
-//                linearParams.width=oriRight-oriLeft;
-//                title_R.setLayoutParams(linearParams);
                 ACTION_DOWN_VAL=0;
                 dragDirection = 0;
                 lastdistX=0;
@@ -257,12 +216,6 @@ public class DragBoardView extends LinearLayout /*implements View.OnTouchListene
      */
     private void left(View v, int dx) {
         oriLeft += dx;
-//        if (oriRight-oriLeft > width *2) {
-//            oriLeft -=dx;
-//        }
-//        if (oriRight - oriLeft - 2 * offset < width/2) {
-//            oriLeft = oriRight - 2 * offset - width/2;
-//        }
     }
     /**
      * 触摸点为右边缘
@@ -272,12 +225,6 @@ public class DragBoardView extends LinearLayout /*implements View.OnTouchListene
      */
     private void right(View v, int dx) {
         oriRight += dx;
-//        if (oriRight-oriLeft > width *2) {
-//            oriRight -=dx;
-//        }
-//        if (oriRight - oriLeft - 2 * offset < width/2) {
-//            oriRight = oriLeft + 2 * offset + width/2;
-//        }
     }
     /**
      * 触摸点为下边缘
@@ -287,12 +234,6 @@ public class DragBoardView extends LinearLayout /*implements View.OnTouchListene
      */
     private void bottom(View v, int dy) {
         oriBottom += dy;
-//        if (oriBottom > screenHeight + offset) {
-//            oriBottom = screenHeight + offset;
-//        }
-//        if (oriBottom - oriTop - 2 * offset < height/2) {
-//            oriBottom = height/2 + oriTop + 2 * offset;
-//        }
     }
     /**
      * 触摸点为上边缘
@@ -302,13 +243,6 @@ public class DragBoardView extends LinearLayout /*implements View.OnTouchListene
      */
     private void top(View v, int dy) {
         oriTop += dy;
-//        if (oriTop < -offset) {
-//            //对view边界的处理，如果子view达到父控件的边界，offset代表允许超出父控件多少
-//            oriTop = -offset;
-//        }
-//        if (oriBottom - oriTop - 2 * offset < height/2) {
-//            oriTop = oriBottom - 2 * offset - height/2;
-//        }
     }
     /**
      * 获取触摸点flag
