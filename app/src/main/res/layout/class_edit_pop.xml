@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="bottom"
+    android:id="@+id/rl_outside_view"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/other_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_inputdlg_view"/>
+    <LinearLayout
+        android:id="@+id/rl_inputdlg_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/edit_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/common_shape_line_100"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"
+            android:maxLines="3"
+            android:maxLength="200"
+            android:layout_marginRight="15dp"
+            android:hint="聊天输入"
+            android:padding="10dp" />
+        <TextView
+            android:id="@+id/chat_send_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_200"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginRight="16dp"
+            android:text="发送"/>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<resources>
+
+    <style name="class_main_menu_animstyle">
+        <item name="android:windowEnterAnimation">@anim/class_anim_enter_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/class_anim_exit_from_bottom</item>
+    </style>
+    <!-- 中间弹出框 -->
+    <style name="class_dialog_center" parent="Theme.AppCompat.Dialog.Alert">
+        <!-- 去黑边 -->
+        <item name="android:windowFrame">@null</item>
+        <item name="android:screenOrientation">landscape</item>
+        <!-- 设置是否可滑动 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 背景 -->
+        <item name="android:windowBackground">#00000000</item>
+        <!-- 是否变暗 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 点击空白部分activity不消失 -->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+</resources>
